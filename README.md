@@ -10,12 +10,13 @@ This will then be used for setting up your environment by installing different d
 
 ## How to use it
 
-Running `install.ps1` will clone the above mentioned repository into your current working directory.
+Running `install.ps1` will clone the above mentioned `bootstrap` repository to a directory named `.bootstrap` in your current working directory.
 One can also utilize it by invoking a web-request (e.g. curl) to the url which is tied to the script's source.
 See the following example for Powershell:
 
 ```powershell
-Invoke-RestMethod https://raw.githubusercontent.com/avengineers/bootstrap-installer/v1.6.0/install.ps1 | Invoke-Expression
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://raw.githubusercontent.com/avengineers/bootstrap-installer/v1.6.0/install.ps1 | Invoke-Expression
 ```
 
 ## Contributing
@@ -28,4 +29,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 ## Contact Information
 
-For any queries, please contact us via email.
+For any queries, please raise an issue in this repository.
