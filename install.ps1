@@ -88,6 +88,6 @@ $InformationPreference = "Continue"
 $ErrorActionPreference = "Stop"
 
 # Clone the bootstrap repository (using a release tag)
-CloneOrPullGitTag -RepoUrl "https://github.com/avengineers/bootstrap.git" -Tag "v1.6.1" -TargetDirectory ".bootstrap"
+CloneOrPullGitTag -RepoUrl "https://github.com/avengineers/bootstrap.git" -Tag "v1.6.2" -TargetDirectory ".bootstrap"
 
 ## end of script
