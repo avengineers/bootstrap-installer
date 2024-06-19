@@ -14,7 +14,7 @@ function Remove-Path {
 }
 
 # Call a command and handle its exit code
-Function Invoke-CommandLine {
+function Invoke-CommandLine {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingInvokeExpression', '', Justification = 'Usually this statement must be avoided (https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/avoid-using-invoke-expression?view=powershell-7.3), here it is OK as it does not execute unknown code.')]
     param (
         [Parameter(Mandatory = $true, Position = 0)]
@@ -28,15 +28,19 @@ Function Invoke-CommandLine {
         Write-Output "Executing: $CommandLine"
     }
     $global:LASTEXITCODE = 0
-    Invoke-Expression $CommandLine
+    if ($Silent) {
+        # Omit information stream (6) and stdout (1)
+        Invoke-Expression $CommandLine 6>&1 | Out-Null
+    }
+    else {
+        Invoke-Expression $CommandLine
+    }
     if ($global:LASTEXITCODE -ne 0) {
         if ($StopAtError) {
-            Write-Error "Command line call '$CommandLine' failed with exit code $global:LASTEXITCODE"
+            Write-Error "Command line call `"$CommandLine`" failed with exit code $global:LASTEXITCODE"
         }
         else {
-            if (-Not $Silent) {
-                Write-Output "Command line call '$CommandLine' failed with exit code $global:LASTEXITCODE, continuing ..."
-            }
+            Write-Output "Command line call `"$CommandLine`" failed with exit code $global:LASTEXITCODE, continuing ..."
         }
     }
 }
@@ -88,6 +92,6 @@ $InformationPreference = "Continue"
 $ErrorActionPreference = "Stop"
 
 # Clone the bootstrap repository (using a release tag)
-CloneOrPullGitTag -RepoUrl "https://github.com/avengineers/bootstrap.git" -Tag "v1.6.2" -TargetDirectory ".bootstrap"
+CloneOrPullGitTag -RepoUrl "https://github.com/avengineers/bootstrap.git" -Tag "v1.7.0" -TargetDirectory ".bootstrap"
 
 ## end of script

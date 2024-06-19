@@ -4,7 +4,7 @@
 
 ## Description
 
-This project contains a "one-line" script for enabling the installation of dependencies with the dedicated avengineers repository [bootstrap](https://github.com/avengineers/bootstrap).
+This project contains a "one-line" script for enabling the installation of dependencies with the dedicated Avengineers repository [bootstrap](https://github.com/avengineers/bootstrap).
 It is designed to simplify the process by using a Powershell script to clone the repository.
 This will then be used for setting up your environment by installing different dependencies.
 
@@ -15,8 +15,8 @@ One can also utilize it by invoking a web-request (e.g. curl) to the url which i
 See the following example for Powershell:
 
 ```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-Invoke-RestMethod -Uri https://raw.githubusercontent.com/avengineers/bootstrap-installer/v1.6.0/install.ps1 | Invoke-Expression
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+Invoke-RestMethod -Uri https://raw.githubusercontent.com/avengineers/bootstrap-installer/v1.7.0/install.ps1 | Invoke-Expression
 ```
 
 ## Contributing
