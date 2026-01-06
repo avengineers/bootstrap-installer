@@ -56,12 +56,12 @@ function CloneOrPullGitTag {
     if (Test-Path -Path "$TargetDirectory\.git" -PathType Container) {
         try {
             Push-Location $TargetDirectory
-            
+
             # fetch and checkout the tag
             Invoke-CommandLine "git fetch --tags" -Silent $true
             Invoke-CommandLine "git checkout $Tag" -Silent $true
             Invoke-CommandLine "git reset --hard --quiet" -Silent $true
-            
+
             Pop-Location
             return
         }
@@ -92,6 +92,6 @@ $InformationPreference = "Continue"
 $ErrorActionPreference = "Stop"
 
 # Clone the bootstrap repository (using a release tag)
-CloneOrPullGitTag -RepoUrl "https://github.com/avengineers/bootstrap.git" -Tag "v1.17.2" -TargetDirectory ".bootstrap"
+CloneOrPullGitTag -RepoUrl "https://github.com/avengineers/bootstrap.git" -Tag "v1.18.0" -TargetDirectory ".bootstrap"
 
 ## end of script
