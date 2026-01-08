@@ -92,6 +92,6 @@ $InformationPreference = "Continue"
 $ErrorActionPreference = "Stop"
 
 # Clone the bootstrap repository (using a release tag)
-CloneOrPullGitTag -RepoUrl "https://github.com/avengineers/bootstrap.git" -Tag "v1.18.0" -TargetDirectory ".bootstrap"
+CloneOrPullGitTag -RepoUrl "https://github.com/avengineers/bootstrap.git" -Tag "v1.19.0-rc1" -TargetDirectory ".bootstrap"
 
 ## end of script
